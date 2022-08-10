@@ -1,34 +1,15 @@
 import * as C from "./style"
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
-import { API } from '../../api/API'
 
 import { Card } from '../../components/cards/Card'
 import Loading from "../../components/loading/Loading"
-
+import { Link } from "react-router-dom"
+import { Context } from "../../contexts/Context"
+import Search from "../../components/search/Search"
 
 const Pokemons = () => {
-    const [pokedex, setPokedex] = useState();
-    const [listPokemons, setListPokemons] = useState();
-
-    useEffect(() => {
-        handleData()
-    },[])
-
-    const handleData = async () => {
-        const json = await API.getAllPokemons()
-        setPokedex(json.results)
-        handleListPokemons(json.results);
-    }
-
-    const handleListPokemons = async (data) => {
-        let list = []
-        for (let i = 1; i < data.length; i++) {
-            const json = await API.getPokemons(i)
-            list.push(json)
-        }
-        return setListPokemons(list)
-    }
+    const {listPokemons} = useContext(Context)
 
     return (
         <>
@@ -37,8 +18,13 @@ const Pokemons = () => {
         }
           {listPokemons &&
             <C.Container>
+                <div>
+                    <Search/>
+                </div>
                 {listPokemons.map((item, key) => (
-                   <Card data={item} key={key}/>
+                    <Link to={`/pokemon/${item.id}`} style={{textDecoration: "none"}} key={key}>
+                        <Card data={item}/>
+                    </Link>
                 ))}
             </C.Container>
           }

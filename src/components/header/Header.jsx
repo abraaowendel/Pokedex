@@ -9,7 +9,6 @@ const Header = () => {
                 <C.Image src={Logo} alt="" />
                 <C.Title>Pokédex</C.Title>
             </C.Logo>
-            <Search/>
         </C.Header>
     );
 }
