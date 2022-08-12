@@ -3,6 +3,9 @@ import { SwitchBgColor } from "../../utils/SwitchBgColor";
 import { SwitchTypes } from "../../utils/SwitchTypes";
 import * as C from "./style"
 import Stats from "../../pages/PokemonInfo/baseStats/Stats"
+import Back from "../../assets/svgs/arrow-left.svg"
+import Height from "../../assets/svgs/height.svg"
+import Weight from "../../assets/svgs/weight.svg"
 
 export const Info = (props) => {
     let {data} = props;
@@ -10,9 +13,15 @@ export const Info = (props) => {
     return (
         <C.Item color={SwitchBgColor(data.types[0].type.name)}> 
             <C.ItemTop>
-                <C.ButtonBack>Voltar</C.ButtonBack>
-                <C.Title>{data.name}</C.Title>
-                <C.Id>#{FormatID(data.id)}</C.Id>
+                <C.SideLeft>
+                    <C.ButtonBack>
+                        <C.IconBack src={Back} alt="" />
+                    </C.ButtonBack>
+                    <C.Title>{data.name}</C.Title>
+                </C.SideLeft>
+                <C.SideRigth>
+                    <C.Id>#{FormatID(data.id)}</C.Id>
+                </C.SideRigth>
             </C.ItemTop>
             <C.ItemMain>
                 <C.Image src={data.sprites.other["official-artwork"].front_default} alt={data.species.name} />
@@ -26,10 +35,25 @@ export const Info = (props) => {
                 <C.AboutTitle>About</C.AboutTitle>
                 <C.AboutPhysical>
                     <C.AboutPhysicalItem>
-                        
+                        <C.AboutItem>
+                            <C.AboutItemIcon src={Weight}/>
+                            <C.AboutItemResult>{data.weight / 10}kg</C.AboutItemResult>
+                        </C.AboutItem>
+                        <C.AboutItemTitle>Weight</C.AboutItemTitle>
                     </C.AboutPhysicalItem>
                     <C.AboutPhysicalItem>
-                        
+                        <C.AboutItem>
+                            <C.AboutItemIcon src={Height}/>
+                            <p>{data.height / 10}m</p>
+                        </C.AboutItem>
+                        <C.AboutItemTitle>Height</C.AboutItemTitle>
+                    </C.AboutPhysicalItem>
+                    <C.AboutPhysicalItem>
+                        <C.AboutItemMoves>
+                            <p>{data.abilities[0].ability.name}</p>
+                            <p>{data.abilities[1].ability.name}</p>
+                        </C.AboutItemMoves>
+                        <C.AboutItemTitle>Moves</C.AboutItemTitle>
                     </C.AboutPhysicalItem>
                 </C.AboutPhysical>
                 <C.Preferences>

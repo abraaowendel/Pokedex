@@ -10,7 +10,7 @@ import Search from "../../components/search/Search"
 
 const Pokemons = () => {
     const {listPokemons} = useContext(Context)
-
+    
     return (
         <>
         {!listPokemons &&
@@ -18,14 +18,14 @@ const Pokemons = () => {
         }
           {listPokemons &&
             <C.Container>
-                <div>
-                    <Search/>
-                </div>
-                {listPokemons.map((item, key) => (
-                    <Link to={`/pokemon/${item.id}`} style={{textDecoration: "none"}} key={key}>
-                        <Card data={item}/>
-                    </Link>
-                ))}
+                <Search/>
+                <C.Grid>
+                    {listPokemons.map((item, key) => (
+                        <Link to={`/pokemon/${item.id}`} style={{textDecoration: "none"}} key={key}>
+                            <Card data={item}/>
+                        </Link>
+                    ))}
+                </C.Grid>
             </C.Container>
           }
         </>

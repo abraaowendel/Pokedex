@@ -4,7 +4,7 @@ export const Header = styled.header`
     background-color: #F7F7F7;
     padding: 30px 40px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     @media screen and (max-width: 615px) {
         flex-direction: column;
@@ -12,8 +12,9 @@ export const Header = styled.header`
     }
 `;
 export const Title = styled.h2`
-    font-size: 2em;
+    font-size: 2.5em;
     margin: 0 10px;
+    color: #212121;
 `;
 export const Image = styled.img`
 `;
