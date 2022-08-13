@@ -4,24 +4,23 @@ import Back from "../../assets/svgs/arrow-left.svg"
 
 export const Item = styled.div`
     position: relative;
-    min-height: 500px;
+    min-height: 527px;
     min-width: 450px;
-    background-image: url(${bg});
-    background-repeat: no-repeat;
-    background-position:  center;
     background-color: ${(props) => props.color};
     border-radius: 20px;
+    padding: 1px;
     h5{
         color: ${(props) => props.color};
+        font-size: 1.2em;
     }
 `;
 
 export const ItemTop = styled.div`
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     padding: 20px;
-    min-height: 200px;
+    min-height: 80px;
 `;
 export const ButtonBack = styled.button`
     border: 0;
@@ -51,27 +50,24 @@ export const Id = styled.h4`
 `;
 
 export const ItemMain = styled.div`
-    position: relative;
+    display: flex;
+    justify-content: center;
 `;
 export const Image = styled.img`
     height: 200px;
-    position: absolute;
-    left: 120px;
-    bottom: -70px;
 `;
 export const TypeImage = styled.img`
     margin: 5px;
 `;
 export const ItemAbout = styled.div`
-    flex: 1;
     background-color: #fff;
-    margin: 0 6px;
+    margin: 10px 6px;
     border-radius: 15px;
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
-    min-height: 294px;
+    flex: 1;
+    padding: 15px 0;
 `;
 export const ItemAboutTypes = styled.div`
     display: flex;
@@ -79,10 +75,13 @@ export const ItemAboutTypes = styled.div`
 `;
 export const AboutTitle = styled.h5`
     color: ${(props) => props.color};
+    margin: 10px 0;
+    text-align: center;
 `;
 
 export const AboutPhysical = styled.div`
     display: flex;
+    justify-content: center;
 `;
 export const AboutPhysicalItem = styled.div`
     display: flex;
@@ -113,17 +112,15 @@ export const AboutItemIcon = styled.img`
     height: 20px;
     margin-right: 10px;
 `;
-export const AboutItemResult = styled.div`
+export const AboutItemResult = styled.p`
     
 `;
 export const AboutItemTitle = styled.h6`
     color: #8C8C8C;
 `;
-export const Preferences = styled.div`
-    
-`;
 export const BaseStats = styled.div`
     display: flex;
+    flex-direction: column;
 `;
 
 

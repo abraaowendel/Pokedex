@@ -2,19 +2,24 @@ import { FormatID } from "../../utils/FormatID";
 import { SwitchBgColor } from "../../utils/SwitchBgColor";
 import { SwitchTypes } from "../../utils/SwitchTypes";
 import * as C from "./style"
-import Stats from "../../pages/PokemonInfo/baseStats/Stats"
+import Stats from "./baseStats/Stats"
 import Back from "../../assets/svgs/arrow-left.svg"
 import Height from "../../assets/svgs/height.svg"
 import Weight from "../../assets/svgs/weight.svg"
-
+import { useNavigate } from "react-router-dom";
 export const Info = (props) => {
     let {data} = props;
-    console.log(data)
+    const navigate = useNavigate();
+    const color = SwitchBgColor(data.types[0].type.name)
+
+    const handleBack = () => {
+        navigate("/")
+    }
     return (
-        <C.Item color={SwitchBgColor(data.types[0].type.name)}> 
+        <C.Item color={color}> 
             <C.ItemTop>
                 <C.SideLeft>
-                    <C.ButtonBack>
+                    <C.ButtonBack onClick={handleBack}>
                         <C.IconBack src={Back} alt="" />
                     </C.ButtonBack>
                     <C.Title>{data.name}</C.Title>
@@ -44,28 +49,25 @@ export const Info = (props) => {
                     <C.AboutPhysicalItem>
                         <C.AboutItem>
                             <C.AboutItemIcon src={Height}/>
-                            <p>{data.height / 10}m</p>
+                            <C.AboutItemResult>{data.height / 10}m</C.AboutItemResult>
                         </C.AboutItem>
                         <C.AboutItemTitle>Height</C.AboutItemTitle>
                     </C.AboutPhysicalItem>
                     <C.AboutPhysicalItem>
                         <C.AboutItemMoves>
-                            <p>{data.abilities[0].ability.name}</p>
-                            <p>{data.abilities[1].ability.name}</p>
+                            <C.AboutItemResult>{data.abilities[0].ability.name}</C.AboutItemResult>
+                            <C.AboutItemResult>{data.abilities[1].ability.name}</C.AboutItemResult>
                         </C.AboutItemMoves>
                         <C.AboutItemTitle>Moves</C.AboutItemTitle>
                     </C.AboutPhysicalItem>
                 </C.AboutPhysical>
-                <C.Preferences>
-
-                </C.Preferences>
                 <C.BaseStats>
-                    <Stats title="HP" data={data.stats[0].base_stat}/>
-                    <Stats title="ATK" data={data.stats[1].base_stat}/>
-                    <Stats title="DEF" data={data.stats[2].base_stat}/>
-                    <Stats title="SATK" data={data.stats[3].base_stat}/>
-                    <Stats title="SDEF" data={data.stats[4].base_stat}/>
-                    <Stats title="SPD" data={data.stats[5].base_stat}/>
+                    <Stats title="HP" data={data.stats[0].base_stat} color={color}/>
+                    <Stats title="ATK" data={data.stats[1].base_stat} color={color}/>
+                    <Stats title="DEF" data={data.stats[2].base_stat} color={color}/>
+                    <Stats title="SATK" data={data.stats[3].base_stat} color={color}/>
+                    <Stats title="SDEF" data={data.stats[4].base_stat} color={color}/>
+                    <Stats title="SPD" data={data.stats[5].base_stat} color={color}/>
                 </C.BaseStats>
             </C.ItemAbout>
             

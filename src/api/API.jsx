@@ -4,7 +4,7 @@ const BASE_URL = `https://pokeapi.co/api/v2/pokemon`
 
 export const API = {
     getAllPokemons: async () => {
-        const response = await axios.get(`${BASE_URL}/?limit=21&offset=0`)
+        const response = await axios.get(`${BASE_URL}/?limit=160&offset=1`)
         return (await response.data.results)
     },
     getPokemons: async (id) => {

@@ -3,6 +3,7 @@ import bg from "../../assets/img/background.jpg"
 
 export const Container = styled.div `
    display: flex;
+   justify-content: center;
    flex-direction: column;
 `
 export const Main = styled.main `
