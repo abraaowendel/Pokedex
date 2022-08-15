@@ -6,7 +6,7 @@ export const MainRoutes = () => {
     return (
         useRoutes([
             {path:"/", element:<Pokemons/>},
-            {path:"/pokemon/:idPoke", element:<Pokemon/>},
+            {path:"/:idPoke", element:<Pokemon/>},
         ])
     );
 }

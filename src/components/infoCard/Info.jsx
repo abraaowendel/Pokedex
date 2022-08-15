@@ -1,75 +1,103 @@
+import * as C from "./style"
+import { useNavigate } from "react-router-dom";
+
 import { FormatID } from "../../utils/FormatID";
 import { SwitchBgColor } from "../../utils/SwitchBgColor";
 import { SwitchTypes } from "../../utils/SwitchTypes";
-import * as C from "./style"
+
 import Stats from "./baseStats/Stats"
+
 import Back from "../../assets/svgs/arrow-left.svg"
 import Height from "../../assets/svgs/height.svg"
 import Weight from "../../assets/svgs/weight.svg"
-import { useNavigate } from "react-router-dom";
+
 export const Info = (props) => {
-    let {data} = props;
+
+    const {data} = props;
     const navigate = useNavigate();
     const color = SwitchBgColor(data.types[0].type.name)
 
     const handleBack = () => {
-        navigate("/")
+        navigate(-1)
     }
+   
     return (
         <C.Item color={color}> 
-            <C.ItemTop>
-                <C.SideLeft>
-                    <C.ButtonBack onClick={handleBack}>
-                        <C.IconBack src={Back} alt="" />
-                    </C.ButtonBack>
-                    <C.Title>{data.name}</C.Title>
-                </C.SideLeft>
-                <C.SideRigth>
-                    <C.Id>#{FormatID(data.id)}</C.Id>
-                </C.SideRigth>
-            </C.ItemTop>
-            <C.ItemMain>
+            <C.SideLeft color={color}>
+
+                <C.ButtonBack onClick={handleBack}>
+                    <C.IconBack src={Back} alt="" />
+                </C.ButtonBack>
+
                 <C.Image src={data.sprites.other["official-artwork"].front_default} alt={data.species.name} />
-            </C.ItemMain>
-            <C.ItemAbout>
-                <C.ItemAboutTypes>
-                    {data.types.map((item, key) => (
-                        <C.TypeImage src={SwitchTypes(item.type.name)} key={key} alt={data.species.name} />
-                    ))}
-                </C.ItemAboutTypes>
-                <C.AboutTitle>About</C.AboutTitle>
-                <C.AboutPhysical>
-                    <C.AboutPhysicalItem>
-                        <C.AboutItem>
-                            <C.AboutItemIcon src={Weight}/>
-                            <C.AboutItemResult>{data.weight / 10}kg</C.AboutItemResult>
-                        </C.AboutItem>
-                        <C.AboutItemTitle>Weight</C.AboutItemTitle>
-                    </C.AboutPhysicalItem>
-                    <C.AboutPhysicalItem>
-                        <C.AboutItem>
-                            <C.AboutItemIcon src={Height}/>
-                            <C.AboutItemResult>{data.height / 10}m</C.AboutItemResult>
-                        </C.AboutItem>
-                        <C.AboutItemTitle>Height</C.AboutItemTitle>
-                    </C.AboutPhysicalItem>
-                    <C.AboutPhysicalItem>
-                        <C.AboutItemMoves>
-                            <C.AboutItemResult>{data.abilities[0].ability.name}</C.AboutItemResult>
-                            <C.AboutItemResult>{data.abilities[1].ability.name}</C.AboutItemResult>
-                        </C.AboutItemMoves>
-                        <C.AboutItemTitle>Moves</C.AboutItemTitle>
-                    </C.AboutPhysicalItem>
-                </C.AboutPhysical>
-                <C.BaseStats>
-                    <Stats title="HP" data={data.stats[0].base_stat} color={color}/>
-                    <Stats title="ATK" data={data.stats[1].base_stat} color={color}/>
-                    <Stats title="DEF" data={data.stats[2].base_stat} color={color}/>
-                    <Stats title="SATK" data={data.stats[3].base_stat} color={color}/>
-                    <Stats title="SDEF" data={data.stats[4].base_stat} color={color}/>
-                    <Stats title="SPD" data={data.stats[5].base_stat} color={color}/>
-                </C.BaseStats>
-            </C.ItemAbout>
+                
+                <C.About>
+                    <C.Title>{data.name}</C.Title>
+                    <C.Id>#{FormatID(data.id)}</C.Id>
+                    <C.AboutTypes>
+                        {data.types.map((item, key) => (
+                            <C.TypeImage src={SwitchTypes(item.type.name)} key={key} alt={data.species.name} />
+                        ))}
+                    </C.AboutTypes>
+                </C.About>
+
+            </C.SideLeft>
+
+            <C.SideRigth>
+
+                <C.SideRigthTop>
+
+                    <C.AboutTitle>About</C.AboutTitle>
+
+                    <C.Health>
+
+                        <C.HealthItem>
+                            <C.HealthDescription>
+                                <img src={Weight} alt="" />
+                                <p>{data.weight / 10}kg</p>
+                            </C.HealthDescription>
+                            <C.HealthTitle>
+                                Weight
+                            </C.HealthTitle>
+                        </C.HealthItem>
+
+                        <C.HealthItem>
+                            <C.HealthDescription>
+                                <img src={Height} alt="" />
+                                <p>{data.height / 10}m</p>
+                            </C.HealthDescription>
+                            <C.HealthTitle>
+                                Height
+                            </C.HealthTitle>
+                        </C.HealthItem>
+
+                        <C.HealthItem>
+                            <C.HealthAbilities>
+                                {data.abilities.map((item, key) => (  
+                                    <p key={key}>{item.ability.name}</p>
+                                ))}
+                            </C.HealthAbilities>
+                            <C.HealthTitle>
+                                Moves
+                            </C.HealthTitle>
+                        </C.HealthItem>
+
+                    </C.Health>
+
+                </C.SideRigthTop>
+
+                <C.SideRigthBottom>
+
+                    <C.AboutTitle>Base Stats</C.AboutTitle>
+
+                    <C.BaseStats>
+                        {data.stats.map((item,key) => (
+                          <Stats title={item.stat.name} data={item.base_stat} color={color} key={key} />
+                        ))}
+                    </C.BaseStats>
+
+                </C.SideRigthBottom>
+            </C.SideRigth>
             
         </C.Item>
     );

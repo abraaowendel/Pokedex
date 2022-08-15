@@ -16,18 +16,18 @@ const Pokemons = () => {
         {!listPokemons &&
             <Loading/>
         }
-          {listPokemons &&
+        {listPokemons &&
             <C.Container>
                 <Search/>
                 <C.Grid>
                     {listPokemons.map((item, key) => (
-                        <Link to={`/pokemon/${item.id}`} style={{textDecoration: "none"}} key={key}>
+                        <Link to={`/${item.id}`} style={{textDecoration: "none"}} key={key}>
                             <Card data={item}/>
                         </Link>
                     ))}
                 </C.Grid>
             </C.Container>
-          }
+        }
         </>
     );
 }

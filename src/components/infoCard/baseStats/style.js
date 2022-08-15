@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    padding: 5px 10px;
+    padding: 5px 0;
     h4{
         color: ${(props) => props.color};
         border-right: 2px solid #ccc;
@@ -10,14 +10,14 @@ export const Container = styled.div`
     }
     p{
         margin: 0 10px;
-        min-width: 25px;
+        min-width: 30px;
     }
     div{
         border: 1px solid ${(props) => props.color};
         width: 100%;
         position: relative;
         overflow-x: hidden;
-        background-color: #cece;
+        background-color: #CCCCCC;
         border-radius: 15px;
         span{
             position: absolute;
@@ -26,7 +26,7 @@ export const Container = styled.div`
             top: 0;
             right: 0;
             display: block;
-            width: ${(props) => props.width}%;
+            width: ${(props) => props.width / 2}%;
             background-color: ${(props) => props.color};
         }
     }

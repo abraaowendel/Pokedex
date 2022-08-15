@@ -3,127 +3,179 @@ import bg from "../../assets/svgs/Pokeball.svg"
 import Back from "../../assets/svgs/arrow-left.svg"
 
 export const Item = styled.div`
-    position: relative;
-    min-height: 527px;
-    min-width: 450px;
-    background-color: ${(props) => props.color};
+    display: flex;
+    min-width: 100%;
     border-radius: 20px;
-    padding: 1px;
+    border: 1px solid ${(props) => props.color};
     h5{
         color: ${(props) => props.color};
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
+    @media screen and (max-width: 767px){
+        flex-direction: column;
+    } 
+    
 `;
+export const SideLeft = styled.div `
+    min-width: 375px;
+    position: relative;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px 0 0 20px;
+    background-color: ${(props) => props.color};
+    @media screen and (max-width: 767px){
+        align-items: center;
+        min-width: 100%;
+        border-radius: 20px 20px 0 0px;
+    }
+`
 
-export const ItemTop = styled.div`
+export const About = styled.div `
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    min-height: 80px;
-`;
+    flex-direction: column;
+    justify-content: center;
+
+`
+export const AboutTypes = styled.div `
+    
+`
+
 export const ButtonBack = styled.button`
     border: 0;
+    position: absolute;
+    left: 20px;
+    top: 10px;
     background-color: transparent;
     cursor: pointer;
 `;
-export const SideLeft = styled.div`
-    display: flex;
-    align-items: center;
-`;
-export const SideRigth = styled.div`
-    
-`;
 export const IconBack = styled.img`
-    
+   
+`;
+
+export const Image = styled.img`
+    height: 300px;
+    margin-top: 15px;
+    padding: 15px 15px 0;
+    @media screen and (max-width: 767px){
+        max-width: 250px;
+        height: auto;
+        padding: 0;
+        margin: 20px 0 0;
+    }
 `;
 
 export const Title = styled.h2`
     color: #fff;
     text-transform: capitalize;
-    margin-left: 15px;
-    font-size: 1.6em;
+    font-size: 1.5em;
+    margin-bottom: 10px;
 `;
 
 export const Id = styled.h4`
     color: #fff;
+    position: absolute;
+    right: 20px;
+    top: 20px;
 `;
 
-export const ItemMain = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-export const Image = styled.img`
-    height: 200px;
-`;
 export const TypeImage = styled.img`
-    margin: 5px;
-`;
-export const ItemAbout = styled.div`
-    background-color: #fff;
-    margin: 10px 6px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-    padding: 15px 0;
-`;
-export const ItemAboutTypes = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-export const AboutTitle = styled.h5`
-    color: ${(props) => props.color};
-    margin: 10px 0;
-    text-align: center;
-`;
-
-export const AboutPhysical = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-export const AboutPhysicalItem = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-width: 100px;
-    margin-bottom: 20px;
-    &:nth-child(2){
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-    }
-`;
-export const AboutItem = styled.div`
-    height: 50px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 0 25px;
-`;
-export const AboutItemMoves = styled.div`
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    padding: 0 25px;
-
-`;
-export const AboutItemIcon = styled.img`
-    height: 20px;
-    margin-right: 10px;
-`;
-export const AboutItemResult = styled.p`
-    
-`;
-export const AboutItemTitle = styled.h6`
-    color: #8C8C8C;
 `;
 export const BaseStats = styled.div`
     display: flex;
     flex-direction: column;
 `;
+export const SideRigth = styled.div `
+    background-color: #fff;
+    flex: 1;
+    border-radius: 0 20px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    @media screen and (max-width: 767px){
+        border-radius: 0 0 20px 20px;
+    }
+`
+export const SideRigthTop = styled.div `
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+`
+export const SideRigthBottom = styled.div `
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+`
+export const AboutTitle = styled.h5`
+    font-size: 1.2em;
+    text-align: center;
+    margin: 10px 0;
+`;
 
-
-
-
-
+export const Health = styled.div `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 20px;
+    @media screen and (max-width: 375px){
+    }
+`
+export const HealthItem = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+   
+    @media screen and (max-width: 375px){
+        
+    }
+`
+export const HealthDescription = styled.div `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    p{
+        margin: 0 10px;
+    }
+    img{
+        height: 25px;
+    }
+    @media screen and (max-width: 375px){
+      img{
+        height: 20px;
+      }
+      p{
+        font-size: 0.875em;
+      }
+    }
+`
+export const HealthAbilities = styled.div `
+    display: flex;
+    flex-direction: column;
+    min-height: 45px;
+    p{
+        text-transform: capitalize;
+    }
+    @media screen and (max-width: 375px){
+      p{
+        font-size: 0.875em;
+      }
+    }
+    
+`
+export const HealthTitle = styled.h4 `
+    color: #C5C5C5;
+    font-weight: 100;
+    margin-top: 5px;
+    @media screen and (max-width: 375px){
+      font-size: 0.9em;
+    }
+`   
