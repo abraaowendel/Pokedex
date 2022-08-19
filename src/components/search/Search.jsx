@@ -3,9 +3,9 @@ import IconSearch from "../../assets/svgs/Search.svg"
 
 const Search = () => {
     const handleSearchPokemon = () => {
-      
-    }
 
+    }
+    
     return (
         <C.Search onSubmit={handleSearchPokemon}>
           <C.SearchInput type="text" placeholder="Procurar"/>

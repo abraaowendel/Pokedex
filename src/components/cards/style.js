@@ -61,6 +61,7 @@ export const Image = styled.img `
     }
 `
 export const TypeImage = styled.img `
-    border: 1px solid #5A85D4;
+    border: 1px solid #f0f0f0;
     border-radius: 13px;
+    height: 25px;
 `
